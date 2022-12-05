@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-square {
+    min-width: 1em;
+    min-height: 1em;
+    flex: auto;
+    border: 1px solid;
+}
+
+.grid-row {
+    display: flex;
+    flex: auto;
+
+}
+
+.grid-container {        
+    width: 32em;
+    height: 32em;
+    border: 2px solid pink;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
