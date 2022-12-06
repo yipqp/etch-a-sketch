@@ -1,26 +1,90 @@
-* {
-    margin: 0;
+/* https://coolors.co/f5f1ed-608072-a2988e-3d514a-002e2c */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto;
     padding: 0;
+    background-color: #608072;
+    user-select: none;
+}
+
+.header,
+.main-container,
+.footer
+.function-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.header {   
+    letter-spacing: 4px;
+    font-size: 50px;
+    font-weight: 700;
+    padding: 50px;
+    text-shadow: 4px 4px 1px #A2988E;
+    color: #F5F1ED;
+}
+
+.main-container {
+    flex: 1;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    background-color: #F5F1ED;
+    padding: 100px;
+    margin: 0 150px;
+    
+}
+
+
+.function-container {
+    border: 1px solid black;
+}
+
+.footer {
+    background-color: #465D54;
+    flex: none;
+    margin-top: 50px;
+    padding: 15px;
+
+
+}
+
+.grid-container {   
+    width: 36em;
+    /* height: 36em; */
+    aspect-ratio: 1/1;
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    box-shadow: 2px 2px 5px #a9a9a9;
+    margin: 10px;
 }
 
 .grid-square {
-    min-width: 1em;
-    min-height: 1em;
+    aspect-ratio: 1 / 1;
+    width: 100%;
     flex: auto;
-    border: 1px solid;
 }
 
 .grid-row {
     display: flex;
-    flex: auto;
-
+    flex: 1;
+    flex-wrap: wrap;
 }
 
-.grid-container {        
-    width: 32em;
-    height: 32em;
-    border: 2px solid pink;
-    display: flex;
-    flex-wrap: wrap;
-    
+
+.grid-slider {
+    background: #d3d3d3;
+    height: 3em;
+    border-radius: 5em;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.grid-slider:hover {
+    opacity: 1;
 }
