@@ -1,8 +1,31 @@
 const gridContainer = document.querySelector(".grid-container");
 const output = document.querySelector(".output");
 const gridSlider = document.querySelector(".grid-slider");
+const colorPicker = document.querySelector(".color-picker");
+const drawButton = document.querySelector(".draw");
+const eraseButton = document.querySelector(".erase");
+const clearButton = document.querySelector(".clear");
+
+let color = "#242424";
+let isDrawing = false;
 
 gridSlider.addEventListener("change", updateGrid);
+colorPicker.addEventListener("change", changeColor);
+drawButton.addEventListener("click", enableDraw);
+eraseButton.addEventListener("click", enableErase);
+clearButton.addEventListener("click", updateGrid);
+
+function changeColor(e) {
+    color = e.target.value;
+}
+
+function enableDraw() {
+    color = colorPicker.value;
+}
+
+function enableErase() {
+    color = "#F5F1ED";
+}
 
 function updateGrid() {
     let input = gridSlider.value;
@@ -24,11 +47,16 @@ function updateGrid() {
 function makeSquare() {
     const gridSquare = document.createElement("div");
     gridSquare.setAttribute("class", "grid-square");
-    gridSquare.addEventListener("mouseenter", () => {
-        gridSquare.style.backgroundColor = "#B9CAC4";
+    gridSquare.addEventListener("mousedown", () => {
+        isDrawing = true;
+        gridSquare.style.backgroundColor = color;
+
     });
-    gridSquare.addEventListener("mouseleave", () => {
-        gridSquare.style.backgroundColor = "";
+    gridSquare.addEventListener("mousemove", () => {
+        if (isDrawing) gridSquare.style.backgroundColor = color;
+    });
+    gridSquare.addEventListener("mouseup", () => {
+        isDrawing = false;
     });
     return gridSquare;
 }
