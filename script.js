@@ -3,17 +3,19 @@ const output = document.querySelector("output");
 const gridSlider = document.querySelector(".grid-slider");
 const colorPicker = document.querySelector(".color-picker");
 const drawButton = document.querySelector(".draw");
+const rainbowButton = document.querySelector(".rainbow");
 const eraseButton = document.querySelector(".erase");
 const clearButton = document.querySelector(".clear");
 
 let color = "#242424";
 let isDrawing = false;
-let drawEnabled = true;
+let rainbowEnabled = false;
 
 gridSlider.addEventListener("change", updateGrid);
 gridSlider.addEventListener("input", displayOutput);
 colorPicker.addEventListener("change", changeColor);
 drawButton.addEventListener("click", enableDraw);
+rainbowButton.addEventListener("click", enableRainbow);
 eraseButton.addEventListener("click", enableErase);
 clearButton.addEventListener("click", updateGrid);
 
@@ -22,15 +24,29 @@ function changeColor(e) {
 }
 
 function enableDraw() {
-    color = colorPicker.value;
-    eraseButton.classList.remove("active");
+    resetModes();
     this.classList.add("active");
+    color = colorPicker.value;  
+}
+
+function enableRainbow() {
+    resetModes();
+    this.classList.add("active");
+    rainbowEnabled = true;
 }
 
 function enableErase() {
-    color = "#F5F1ED";
-    drawButton.classList.remove("active");
+    resetModes();
     this.classList.add("active");
+    color = "#F5F1ED";
+}
+
+function resetModes() {
+    const modes = document.querySelectorAll(".mode");
+    modes.forEach((button) => {
+        if (button.classList.contains("active")) button.classList.remove("active");
+    });
+    rainbowEnabled = false;
 }
 
 function updateGrid() {
@@ -61,10 +77,21 @@ function makeSquare() {
     gridSquare.addEventListener("mousedown", () => {
         isDrawing = true;
         gridSquare.style.backgroundColor = color;
-
+        if (rainbowEnabled) {
+            const r = (Math.round(Math.random()* 127) + 127).toString(16);
+            const g = (Math.round(Math.random()* 127) + 127).toString(16);
+            const b = (Math.round(Math.random()* 127) + 127).toString(16);
+            color = '#' + r + g + b;
+        }
     });
     gridSquare.addEventListener("mousemove", () => {
         if (isDrawing) gridSquare.style.backgroundColor = color;
+        if (rainbowEnabled) {
+            const r = (Math.round(Math.random()* 127) + 127).toString(16);
+            const g = (Math.round(Math.random()* 127) + 127).toString(16);
+            const b = (Math.round(Math.random()* 127) + 127).toString(16);
+            color = '#' + r + g + b;
+        }
     });
     gridSquare.addEventListener("mouseup", () => {
         isDrawing = false;
