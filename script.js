@@ -8,6 +8,7 @@ const clearButton = document.querySelector(".clear");
 
 let color = "#242424";
 let isDrawing = false;
+let drawEnabled = true;
 
 gridSlider.addEventListener("change", updateGrid);
 gridSlider.addEventListener("input", displayOutput);
@@ -22,10 +23,14 @@ function changeColor(e) {
 
 function enableDraw() {
     color = colorPicker.value;
+    eraseButton.classList.remove("active");
+    this.classList.add("active");
 }
 
 function enableErase() {
     color = "#F5F1ED";
+    drawButton.classList.remove("active");
+    this.classList.add("active");
 }
 
 function updateGrid() {
@@ -42,7 +47,7 @@ function updateGrid() {
         }  
         gridContainer.appendChild(gridRow); 
     }
-
+    drawButton.click();
 }
 
 function displayOutput(e) {
