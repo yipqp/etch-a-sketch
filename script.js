@@ -1,5 +1,5 @@
 const gridContainer = document.querySelector(".grid-container");
-const output = document.querySelector(".output");
+const output = document.querySelector("output");
 const gridSlider = document.querySelector(".grid-slider");
 const colorPicker = document.querySelector(".color-picker");
 const drawButton = document.querySelector(".draw");
@@ -10,6 +10,7 @@ let color = "#242424";
 let isDrawing = false;
 
 gridSlider.addEventListener("change", updateGrid);
+gridSlider.addEventListener("input", displayOutput);
 colorPicker.addEventListener("change", changeColor);
 drawButton.addEventListener("click", enableDraw);
 eraseButton.addEventListener("click", enableErase);
@@ -41,8 +42,13 @@ function updateGrid() {
         }  
         gridContainer.appendChild(gridRow); 
     }
+
 }
 
+function displayOutput(e) {
+    let input = e.target.value;
+    output.textContent = input + " x " + input;
+}
 
 function makeSquare() {
     const gridSquare = document.createElement("div");
@@ -67,11 +73,4 @@ function makeRow() {
     return gridRow;
 }
 
-for (let i = 0; i < 16; i++) {
-    let gridRow = makeRow();
-    for (let j = 0; j < 16; j++) {
-        const gridSquare = makeSquare();
-        gridRow.appendChild(gridSquare);
-    }  
-    gridContainer.appendChild(gridRow); 
-}
+updateGrid();
