@@ -1,4 +1,4 @@
-/* https://coolors.co/f5f1ed-608072-a2988e-3d514a-002e2c */
+/* color palette: https://coolors.co/f5f1ed-608072-a2988e-3d514a-002e2c */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
 body {
@@ -6,10 +6,11 @@ body {
     margin: 0 auto;
     padding: 0;
     background-color: #608072;
+    flex-flow: column wrap;
     user-select: none;
 }
 
-.body-container,
+body,
 .header,
 .footer,
 .function-container,
@@ -19,20 +20,15 @@ body {
     align-items: center;
 }
 
-.body-container {
-    flex-flow: column wrap;
-}
-
 .header {   
     letter-spacing: 4px;
-    font-size: 50px;
-    font-weight: 700;
-    padding: 50px;
+    font-size: 30px;
+    padding: 15px;
     text-shadow: 4px 4px 1px #A2988E;
     color: #F5F1ED;
 }
 
-.main-container {
+.main {
     display: flex;
     gap: 150px;
     border-radius: 25px;
@@ -48,17 +44,22 @@ body {
     max-width: 200px;
 }
 
+button,
+.color-container,
+input[type=range] {
+    transition: all 0.2s ease;
+}
+
 button {
     font-size: 14px;
-    padding: 8px 26px;
+    padding: 8px 24px;
     border-radius: 20px;
-    width: 100px; 
+    width: 110px; 
     border: 2px solid #002E2C;
-    animation: all 1s ease;
 }
 
 button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
     background-color:#002E2C;
     color:#F5F1ED;
 }
@@ -77,6 +78,10 @@ button:active {
     box-shadow: 3px 3px 4px #a9a9a9;
 }
 
+.color-container:hover {
+    transform: scale(1.05);
+}
+
 .color-picker {
     appearance: none;
     border: none;
@@ -88,7 +93,7 @@ button:active {
 }
 
 ::-webkit-color-swatch-wrapper {
-  padding: 0;
+    padding: 0;
 }
 
 ::-webkit-color-swatch{
@@ -106,8 +111,7 @@ output {
 }
 
 .footer {
-    color: #F5F1ED;
-    padding: 20px;
+    padding: 0 0 30px;
 }
 
 .grid-container {   
@@ -138,6 +142,10 @@ input[type=range] {
     width: 150px;
 }
 
+input[type=range]:hover {
+    transform: scale(1.05);
+}
+
 input[type=range]::-webkit-slider-runnable-track {
     cursor: pointer;
     background: #BFB7B0;
@@ -154,4 +162,22 @@ input[type=range]::-webkit-slider-thumb {
     background-color: #608072;
     margin-top: -2px;
     box-shadow: 1px 1px 3px #3D514A;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+a {
+    text-decoration: none;
+    color: #F5F1ED;
+}
+
+a:hover {
+    color:#CCB7A3;
+    cursor: pointer;
+}
+
+a:active {
+    color:#002E2C;
 }

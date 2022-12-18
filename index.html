@@ -10,26 +10,24 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body>
-    <div class="body-container">
-        <div class="header">etch a sketch</div>
-        <div class="main-container">
-            <div class="function-container">
-                <div class="color-container">
-                    <input type="color" value="#242424" class="color-picker">
-                    <div class="color-label">color</div>
-                </div>
-                <button class="draw mode active">draw</button>
-                <button class="rainbow mode">rainbow</button>
-                <button class="erase mode">erase</button>
-                <button class="clear">clear</button>
-                <div class="slider-container">
-                    <input type="range" min="1" max="100" value="16" class="grid-slider">
-                    <output>16 x 16</output>
-                </div>  
+    <header class="header"><h1>etch a sketch</h1></header>
+    <main class="main">
+        <div class="function-container">
+            <div class="color-container">
+                <input type="color" value="#242424" class="color-picker">
+                <div class="color-label">color</div>
             </div>
-            <div class="grid-container"></div>
+            <button class="draw mode active">draw</button>
+            <button class="rainbow mode">rainbow</button>
+            <button class="erase mode">erase</button>
+            <button class="clear">clear</button>
+            <div class="slider-container">
+                <input type="range" min="1" max="100" value="16" class="grid-slider">
+                <output>16 x 16</output>
+            </div>  
         </div>
-        <div class="footer"> made by me</div>
-    </div> 
+        <div class="grid-container"></div>
+    </main>
+    <footer class="footer"><a href="https://github.com/yipqp" target="_blank">made by me ❤</a></footer>
 </body>
 </html>

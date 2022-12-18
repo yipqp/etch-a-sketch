@@ -41,6 +41,13 @@ function enableErase() {
     color = "#F5F1ED";
 }
 
+function getRandomColor() {
+    const r = (Math.round(Math.random()* 127) + 127).toString(16);
+    const g = (Math.round(Math.random()* 127) + 127).toString(16);
+    const b = (Math.round(Math.random()* 127) + 127).toString(16);
+    return '#' + r + g + b;
+}
+
 function resetModes() {
     const modes = document.querySelectorAll(".mode");
     modes.forEach((button) => {
@@ -78,19 +85,13 @@ function makeSquare() {
         isDrawing = true;
         gridSquare.style.backgroundColor = color;
         if (rainbowEnabled) {
-            const r = (Math.round(Math.random()* 127) + 127).toString(16);
-            const g = (Math.round(Math.random()* 127) + 127).toString(16);
-            const b = (Math.round(Math.random()* 127) + 127).toString(16);
-            color = '#' + r + g + b;
+            color = getRandomColor();
         }
     });
-    gridSquare.addEventListener("mousemove", () => {
-        if (isDrawing) gridSquare.style.backgroundColor = color;
+    gridSquare.addEventListener("mousemove", () => {   
+        if (isDrawing) gridSquare.style.backgroundColor = color; 
         if (rainbowEnabled) {
-            const r = (Math.round(Math.random()* 127) + 127).toString(16);
-            const g = (Math.round(Math.random()* 127) + 127).toString(16);
-            const b = (Math.round(Math.random()* 127) + 127).toString(16);
-            color = '#' + r + g + b;
+            color = getRandomColor();
         }
     });
     gridSquare.addEventListener("mouseup", () => {
